@@ -12,9 +12,10 @@ import {
   InputNumber,
   TreeSelect,
   Switch,
+  AutoComplete,
 } from 'antd';
 import Geosuggest, { Suggest } from 'react-geosuggest';
-import "./geosuggest.css";
+import "./survey.css";
 
 const Survey = () => {
   const [componentSize, setComponentSize] = useState('default');
@@ -32,35 +33,11 @@ const Survey = () => {
         layout="horizontal"
         size={componentSize}
       >
-      <Form.Item label="Input">
-        <Geosuggest
-        placeholder="Search locations here..."
-        onSuggestSelect={onSuggestSelect}
-        location={new google.maps.LatLng(53.558572, 9.9278215)}
-        radius={20}/>
-        <Input />
-      </Form.Item>
-        <Form.Item class="highRiskQuery"><label>Are you in contact with high risk individuals on a normal basis?</label>
+        <Form.Item class="symptomQuery"><label>Have you experienced any symptoms synonymous with COVID-19?</label>
           <Select>
             <Select.Option value="yes">Yes</Select.Option>
             <Select.Option value="no">No</Select.Option>
           </Select>
-        </Form.Item>
-        <Form.Item class="Cascader">
-          <Cascader
-            options={[
-              {
-                value: 'zhejiang',
-                label: 'Zhejiang',
-                children: [
-                  {
-                    value: 'hangzhou',
-                    label: 'Hangzhou',
-                  },
-                ],
-              },
-            ]}
-          />
         </Form.Item>
         <Form.Item class="symptomDate"><label>When did you first start having symptoms?</label>
           <DatePicker />
@@ -77,6 +54,18 @@ const Survey = () => {
         <Form.Item class="InputNumber"><label>How many people are in your household?</label>
           <InputNumber />
         </Form.Item>
+        <Form.Item class="highRiskQuery"><label>Are you in contact with high risk individuals on a normal basis?</label>
+          <Select>
+            <Select.Option value="yes">Yes</Select.Option>
+            <Select.Option value="no">No</Select.Option>
+          </Select>
+        </Form.Item>
+        <label>Please enter any places you have visited in the week before your positive COVID test: </label>
+        <Geosuggest
+        placeholder="Search locations here..."
+        onSuggestSelect={onSuggestSelect}
+        location={new google.maps.LatLng(53.558572, 9.9278215)}
+        radius={20}/>
         <Form.Item label="Switch">
           <Switch />
         </Form.Item>

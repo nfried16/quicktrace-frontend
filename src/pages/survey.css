@@ -70,3 +70,8 @@
   .geosuggest__item__matched-text {
     font-weight: bold;
   }
+  label {
+    text-align: center;
+    padding: .5em .65em;
+  }
+  
