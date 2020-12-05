@@ -1,3 +1,5 @@
+/*global google*/
+
 import React, { useState } from 'react';
 import {
   Form,
@@ -11,12 +13,17 @@ import {
   TreeSelect,
   Switch,
 } from 'antd';
+import Geosuggest, { Suggest } from 'react-geosuggest';
+import "./geosuggest.css";
 
 const Survey = () => {
   const [componentSize, setComponentSize] = useState('default');
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
+  const onSuggestSelect = (place) => {
+    console.log(place);
+  }
   return (
     <>
       <Form
@@ -25,15 +32,21 @@ const Survey = () => {
         layout="horizontal"
         size={componentSize}
       >
-        <Form.Item label="Input">
-          <Input />
-        </Form.Item>
-        <Form.Item label="Select">
+      <Form.Item label="Input">
+        <Geosuggest
+        placeholder="Search locations here..."
+        onSuggestSelect={onSuggestSelect}
+        location={new google.maps.LatLng(53.558572, 9.9278215)}
+        radius={20}/>
+        <Input />
+      </Form.Item>
+        <Form.Item class="highRiskQuery"><label>Are you in contact with high risk individuals on a normal basis?</label>
           <Select>
-            <Select.Option value="demo">Demo</Select.Option>
+            <Select.Option value="yes">Yes</Select.Option>
+            <Select.Option value="no">No</Select.Option>
           </Select>
         </Form.Item>
-        <Form.Item label="Cascader">
+        <Form.Item class="Cascader">
           <Cascader
             options={[
               {
@@ -49,22 +62,30 @@ const Survey = () => {
             ]}
           />
         </Form.Item>
-        <Form.Item label="DatePicker">
+        <Form.Item class="symptomDate"><label>When did you first start having symptoms?</label>
           <DatePicker />
         </Form.Item>
-        <Form.Item label="InputNumber">
+        <Form.Item class="testResultQuery"><label>Have you received a positive test result?</label>
+            <Select>
+            <Select.Option value="yes">Yes</Select.Option>
+            <Select.Option value="no">No</Select.Option>
+            </Select>
+        </Form.Item>
+        <Form.Item class="testResultDate"><label>Date of the positive test result, if applicable:</label>
+          <DatePicker />
+        </Form.Item>
+        <Form.Item class="InputNumber"><label>How many people are in your household?</label>
           <InputNumber />
         </Form.Item>
         <Form.Item label="Switch">
           <Switch />
         </Form.Item>
-        <Form.Item label="Button">
-          <Button>Button</Button>
+        <Form.Item class="submitButton">
+          <Button>Submit</Button>
         </Form.Item>
       </Form>
     </>
   );
 };
-
 
 export default Survey;
