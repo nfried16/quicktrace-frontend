@@ -18,8 +18,8 @@ function App() {
         component={NavBar}
       />
       <Switch>
-        {/* <Redirect exact path = '/' to = '/home'/> */}
-        <Route exact path="/home" component={Survey} />
+        <Redirect exact path = '/' to = '/home'/>
+        <Route exact path="/add" component={Survey} />
       </Switch>
     </Router>
   );
