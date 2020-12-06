@@ -1,6 +1,7 @@
 /*global google*/
 
 import React, { useState } from 'react';
+import Autocomplete from '../components/Autocomplete'
 import {
   Form,
   Input,
@@ -22,9 +23,8 @@ const Survey = () => {
   const onFormLayoutChange = ({ size }) => {
     setComponentSize(size);
   };
-  const onSuggestSelect = (place) => {
-    console.log(place);
-  }
+
+
   return (
     <>
       <Form
@@ -43,10 +43,10 @@ const Survey = () => {
           <DatePicker />
         </Form.Item>
         <Form.Item class="testResultQuery"><label>Have you received a positive test result?</label>
-            <Select>
+          <Select>
             <Select.Option value="yes">Yes</Select.Option>
             <Select.Option value="no">No</Select.Option>
-            </Select>
+          </Select>
         </Form.Item>
         <Form.Item class="testResultDate"><label>Date of the positive test result, if applicable:</label>
           <DatePicker />
@@ -61,11 +61,9 @@ const Survey = () => {
           </Select>
         </Form.Item>
         <label>Please enter any places you have visited in the week before your positive COVID test: </label>
-        <Geosuggest
-        placeholder="Search locations here..."
-        onSuggestSelect={onSuggestSelect}
-        location={new google.maps.LatLng(53.558572, 9.9278215)}
-        radius={20}/>
+        <Form.Item>
+          <Autocomplete />
+        </Form.Item>
         <Form.Item label="Switch">
           <Switch />
         </Form.Item>
