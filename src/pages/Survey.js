@@ -16,7 +16,25 @@ import {
   AutoComplete,
 } from 'antd';
 import Geosuggest, { Suggest } from 'react-geosuggest';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 import "./survey.css";
+
+const formItemLayout = {
+  labelCol: {
+    xs: { span: 24 },
+    sm: { span: 4 },
+  },
+  wrapperCol: {
+    xs: { span: 24 },
+    sm: { span: 20 },
+  },
+};
+const formItemLayoutWithOutLabel = {
+  wrapperCol: {
+    xs: { span: 24, offset: 0 },
+    sm: { span: 20, offset: 4 },
+  },
+};
 
 const Survey = () => {
   const [componentSize, setComponentSize] = useState('default');
