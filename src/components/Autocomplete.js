@@ -8,7 +8,7 @@ const Autocomplete = () => {
     return(
         <div style = {{width: '60%'}}>
             <GooglePlacesAutocomplete
-            apiKey = {process.env.API_KEY}
+            apiKey = 'AIzaSyD6iZG7xjTCNbAe8DQEHx2euU8lgV-9170'
             selectProps={{
                 value,
                 onChange: setValue,

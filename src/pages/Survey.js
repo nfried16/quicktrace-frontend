@@ -109,7 +109,7 @@ const Survey = () => {
   };
   const addrToLatLng = async addr => {
     addr.replace(/ /g, '+');
-    const latlng = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addr}&key=${process.env.API_KEY}`)
+    const latlng = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${addr}&key=AIzaSyD6iZG7xjTCNbAe8DQEHx2euU8lgV-9170`)
       .then(res => {return res.data.results[0].geometry.location})
       .catch(err => {console.log(err); return null})
     if(latlng === null) {
