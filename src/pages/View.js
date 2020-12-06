@@ -25,7 +25,7 @@ class View extends React.Component {
     }
 
     getPeople = async () => {
-        await axios.get('http://localhost:5000/positive')
+        await axios.get('https://quicktrace-backend.herokuapp.com/positive')
             .then(res => {
                 res.data.forEach(person => {
                     this.points.push.apply(this.points, person.locations);
@@ -51,7 +51,7 @@ class View extends React.Component {
         if(this.state === null) {
             return (
                 <center>
-                    accept
+                    Loading dot dot dot
                 </center>
             )
         }

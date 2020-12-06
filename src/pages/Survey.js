@@ -17,6 +17,7 @@ import {
 } from 'antd';
 import Geosuggest, { Suggest } from 'react-geosuggest';
 import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
+import axios from 'axios';
 import "./survey.css";
 
 const formItemLayout = {
@@ -94,10 +95,12 @@ const Survey = () => {
 };
 
 // const Survey = () => {
-//   const onFinish = values => {
+//   const onFinish = async values => {
 //     console.log('Received values of form:', values);
+//     axios.post('https://quicktrace-backend.herokuapp.com/positive', {...})
+//       .then(res => console.log(res))
+//       .catch(err => console.log(err))
 //   };
-
 //   return (
 //     <Form name="dynamic_form_item" {...formItemLayout} onFinish={onFinish}>
 //       <Form.Item label = 'Name' name = 'name'>
